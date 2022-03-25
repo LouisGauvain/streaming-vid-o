@@ -2,7 +2,11 @@ const express = require("express");
 const fs = require("fs");
 const path = require("path");
 
-app = express();
+const app = express();
+
+app.get('/', function(req, res) {
+    res.sendFile(path.join(__dirname + '/index.html'))
+})
 
 app.get("/video", function(req, res) {
     const path = "video.mp4";
@@ -46,7 +50,3 @@ app.get("/video", function(req, res) {
 app.listen(3000, () => {
     console.log("Listening on port 3000!");
 });
-
-app.get('/', function(req, res) {
-    res.sendFile(path.join(__dirname + '/index.html'))
-})
